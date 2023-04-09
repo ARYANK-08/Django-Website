@@ -28,8 +28,6 @@
 
 
 
-![Screenshot 2023-04-09 151829](https://user-images.githubusercontent.com/120780784/230769878-420aacd8-aef4-4b0d-8fc6-27cdc953bc1c.png)
-
 
 
 
