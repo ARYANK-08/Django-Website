@@ -113,14 +113,15 @@ def handlerequest(request):
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
     return render(request, 'paymentstatus.html', {'response': response_dict})        
-   
+
+
+
 def profile(request):
     if not request.user.is_authenticated:
         messages.warning(request,"Login & Try Again")
         return redirect('/auth/login')
     
     currentuser="tanjiro@gmail.com"
-   
     items=Orders.objects.filter(email1=currentuser)
     print(currentuser)
     rid=None
@@ -130,11 +131,18 @@ def profile(request):
         # print(i.order_id)
         myid=i.oid
         print(rid)
+    products_list=[]
+    for item in items:
+        products=json.loads(item.items_json)
+        for product_id,product_ordered in products.items():
+                products_list.append(product_ordered)
+    
+    print(products_list)
     status=OrderUpdate.objects.filter(order_id=int())
     for j in status:
         print(j.update_desc)
 
    
-    context ={"items":items,"status":status}
+    context ={"items":items,"status":status,"products_list":products_list}
     # print(currentuser)
     return render(request,"profile.html",context)

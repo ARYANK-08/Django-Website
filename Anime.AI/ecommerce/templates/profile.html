@@ -23,11 +23,29 @@
     <tbody>
 
         {% for i  in items %}
-
         <tr>
-            <th scope="row">{{i.oid}} </th>
+            <th scope="row">{{i.order_id}} </th>
             <td> {{i.name}}</td>
-            <td>{{i.items_json}} </td>
+            <td>
+                <table class="table" style="border: 2px solid rgba(71, 71, 71, 0.351);">
+                 <thead class="thead-dark" style="border: 2px solid rgba(71, 71, 71, 0.351);">
+                    <tr>
+                        <th style="border: 2px solid rgba(71, 71, 71, 0.351);">Quantity</th>
+                        <th style="border: 2px solid rgba(71, 71, 71, 0.351);">Product</th>
+                        <th style="text-wrap: nowrap;">Price(per unit)</th>
+                    </tr>
+                    </thead>
+                <tbody style="border: 2px solid rgba(71, 71, 71, 0.351);">
+                    {% for product in products_list %}
+                            <tr>
+                            <td style="border: 2px solid rgba(71, 71, 71, 0.351);">{{product.0}}</td>
+                            <td style="border: 2px solid rgba(71, 71, 71, 0.351);">{{product.1}}</td>
+                            <td style="border: 2px solid rgba(71, 71, 71, 0.351);">{{product.2}}</td>
+                            </tr>
+                        {% endfor %}
+                </tbody>
+                </table>      
+            </td>
             <td>{{i.amount}} </td>
             <td> {{i.paymentstatus}}</td>
             <td> {{i.address1}}</td>
@@ -55,9 +73,10 @@
         {% endfor %}
 
 
-
+            </tr>
     </tbody>
 </table>
+
     </div>
 </section>
 {% endblock body %}

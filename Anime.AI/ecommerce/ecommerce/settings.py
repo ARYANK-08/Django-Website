@@ -117,8 +117,8 @@ USE_TZ = True
 #to send the email:
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'yourmail@gmail.com'
-EMAIL_HOST_PASSWORD = 'yourpass'
+EMAIL_HOST_USER = 'ruthvik.development@gmail.com'
+EMAIL_HOST_PASSWORD = 'rove pula chfn cfel'
 EMAIL_PORT = 587
 EMAIL_USE_TLS= True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
