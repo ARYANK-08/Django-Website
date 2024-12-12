@@ -60,7 +60,7 @@ def checkout(request):
         Order = Orders(items_json=items_json,name=name,amount=amount, email1=email, address1=address1,address2=address2,city=city,state=state,zip_code=zip_code,phone=phone)
         print(amount)
         Order.save()
-        update = OrderUpdate(order_id=Order.order_id,update_desc="the order has been placed")
+        update = OrderUpdate.objects.get_or_create(order_id=Order.order_id,update_desc="the order has been placed")
         update.save()
         thank = True
 # # PAYMENT INTEGRATION
@@ -77,7 +77,7 @@ def checkout(request):
             "CALLBACK_URL":'http://127.0.0.1:8000/handlerequest/',
         }
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict,MERCHANT_KEY)
-        return render(request,'paytm.html',{'param_dict':param_dict})
+        return render(request,'paytm.html',{'param_dict':param_dict,'thank':thank},)
 
     return render(request,"checkout.html")
 
@@ -121,7 +121,7 @@ def profile(request):
         messages.warning(request,"Login & Try Again")
         return redirect('/auth/login')
     
-    currentuser="tanjiro@gmail.com"
+    currentuser=request.user.email
     items=Orders.objects.filter(email1=currentuser)
     print(currentuser)
     rid=None
