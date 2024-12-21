@@ -40,12 +40,9 @@ Check Out
            <div class="col my-4">
                <h2>Step 1 - My Awesome Cart Express Checkout - Review Your Cart Items</h2>
                <div class="my-4">
-                   <ul class="list-group" id="items">
-
-                    
+                   <ul class="list-group" id="items" > 
                    </ul>
-       
-                   <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">
          <ol class="breadcrumb mt-3">
            <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs. <span id="totalprice"></span>
              <span id="amount"></span></b>. 
@@ -53,12 +50,9 @@ Check Out
            <li></li>
          </ol>
        </nav>
-       
-       
-       
-                   
-               </div>
+        </div>
            </div>
+
            <div class="col my-4">
                <h2>Step 2 - Enter Address & Other Details:</h2>
                <form method="post" action="/checkout/">{% csrf_token %}
@@ -112,7 +106,7 @@ Check Out
                    <br>
                
                    
-                   <button id="btn" type="submit" class="btn btn-success btn-sm btn-block col-md-4">Place Order</button>
+                   <button id="btn" type="submit" class="btn btn-success btn-md btn-block col-md-6">Place Order</button>
                </form>
            </div>
        </div>
@@ -146,10 +140,10 @@ if ($.isEmptyObject(cart)) {
        sum = sum + qty;
        totalPrice = totalPrice + qty* itemPrice;
        
-       mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
-                   ${name}
-                   <div><b> Price : ${itemPrice}</b></div>
-                   <span class="badge badge-primary badge-pill">${qty}</span>
+       mystr = `<li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text ">
+                    <div><b>${name}</b></div>
+                   <div><b>Price:${itemPrice}</b></div>
+                   <span class=""><b>${qty}</b></span>
                </li>`
        $('#items').append(mystr);
    }
